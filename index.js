@@ -275,6 +275,15 @@ app.get("/api/v2/users", async (req, res) => {
   res.json({ count, users });
 });
 
+app.post("/api/v2/followUser"), async (req, res) => {
+  const db = new Database(Databases.Accounts);
+  if (!db.followers) {
+    
+  } else {
+    
+  }
+}
+
 app.post("/api/v2/login", async (req, res) => {
   if (!req.query.username || !req.query.password)
     return res.status(400).json({ error: "InvalidRequest" });
