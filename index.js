@@ -239,6 +239,7 @@ app.post("/api/v2/createAccount", async (req, res) => {
   db.set(req.query.username, {
     username: req.query.username,
     password: cryptr.encrypt(req.query.password),
+    joined: new Date,
     profilepicture: "default",
     token: crypto.randomBytes(25).toString("hex"),
     projects: [],
