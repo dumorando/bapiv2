@@ -218,7 +218,7 @@ app.get("/", (req, res) => {
 
 //route to create an account.
 app.post("/api/v2/createAccount", async (req, res) => {
-  if (!req.query.username || !req.query.password)
+  if (!req.query.username || !req.query.password || !req.query.email)
     return res.status(400).json({ error: "InvalidRequest" });
 
   /**
@@ -239,6 +239,7 @@ app.post("/api/v2/createAccount", async (req, res) => {
   db.set(req.query.username, {
     username: req.query.username,
     password: cryptr.encrypt(req.query.password),
+    email: req.query.email,
     joined: new Date,
     profilepicture: "default",
     token: crypto.randomBytes(25).toString("hex"),
